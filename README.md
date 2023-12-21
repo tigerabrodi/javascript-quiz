@@ -107,24 +107,99 @@ Using the `await` keyword. The `await` keyword can only be used inside an `async
 
 If you do not want to wait for the completion of a Promise, you can use the `then()` method instead.
 
+```javascript
+fetch("https://api.example.com/data")
+  .then((data) => console.log(data))
+  .catch((error) => console.error(error));
+// Code here will execute without waiting for the fetch to complete
+```
+
 10. **What are template literals in JavaScript?**
+
+Template literals are string literals that allow embedded expressions. They are enclosed by the backtick (`) character instead of double or single quotes.
 
 11. **Could you explain the prototype inheritance in JavaScript?**
 
+Every object in JavaScript has a prototype. The prototype is an object that contains properties and methods that the object can access. When we try to access a property or method of an object, JavaScript first looks at the object itself. If it cannot find the property or method, it looks at the object's prototype. If it still cannot find the property or method, it looks at the prototype's prototype. This process continues until it reaches the end of the prototype chain.
+
 12. **What is the execution context in JavaScript and how is it created?**
+
+The execution context is an abstract concept that holds information about the environment in which the current code is being executed. It consists of the scope chain, variable declarations, function declarations, and the value of the `this` keyword.
 
 13. **What is the difference between an arrow function and a regular function in JavaScript?**
 
+The arrow function is a shorthand for a regular function. It does not have its own `this` keyword, so it uses the `this` keyword of its surrounding lexical scope.
+
+Function declarations are hoisted, while arrow functions are not.
+
+Function declarations have their own `this` keyword.
+
 14. **How would you implement inheritance in JavaScript?**
+
+Using the `extends` keyword. The `extends` keyword allows us to create a child class that inherits from a parent class.
+
+We can also use the `Object.create()` method to create an object that inherits from another object.
+
+How to use `Object.create()` with objects:
+
+```javascript
+const parent = {
+  name: "David",
+  age: 30,
+};
+
+const child = Object.create(parent);
+console.log(child.name); // David
+console.log(child.age); // 30
+```
 
 15. **Can you describe what a JavaScript 'class' is and how it works under the hood?**
 
+Classes are a way to create objects with the same properties and methods. They are syntactic sugar for the constructor function pattern.
+
+Classes don't exist in JavaScript like other programming languages. They are just syntactic sugar for the constructor function pattern. When you create a class, JavaScript creates a constructor function and a prototype object for you.
+
 16. **What is event delegation and why is it useful?**
+
+Event delegation is a technique where we attach a single event listener to a parent element instead of attaching multiple event listeners to multiple child elements. This is useful because it allows us to attach event listeners to dynamically added elements.
+
+An example would be where parent captures different types of events from its children. For example, if we have a `<ul>` element with multiple `<li>` elements inside it, we can attach a single event listener to the `<ul>` element instead of attaching multiple event listeners to each `<li>` element.
+
+Each `li` element could have a `data-id` attribute that identifies it. When the event is triggered, we can check the `data-id` attribute of the target element to determine which `<li>` element was clicked.
 
 17. **How does the `this` keyword work in JavaScript?**
 
-18. **What are JavaScript modules, and how do they work?**
+The `this` keyword refers to the object that is executing the current function. It is determined by how a function is called.
 
-19. **Can you explain what a RESTful API is and how it relates to JavaScript?**
+If a function is called with the `new` keyword, `this` refers to the newly created object.
 
-20. **What are the new features introduced in ES6 (ECMAScript 2015)?**
+If a function is called with the `call()` or `apply()` method, `this` refers to the object that is passed as the first argument.
+
+If a function is called with the `bind()` method, `this` refers to the object that is passed as the first argument.
+
+If a function declaration, then `this` refers to the global object.
+
+If an arrow function, then `this` refers to the surrounding lexical scope.
+
+If a function is called as a method of an object, `this` refers to the object that the method is called on.
+
+Let's take a look at call, apply and bind:
+
+```javascript
+const person = {
+  name: "David",
+  age: 30,
+};
+
+function greet(greeting) {
+  console.log(`${greeting}, my name is ${this.name}`);
+}
+
+greet.call(person, "Hello"); // Hello, my name is David
+greet.apply(person, ["Hello"]); // Hello, my name is David
+greet.bind(person, "Hello")(); // Hello, my name is David
+```
+
+- `call()` takes the object as the first argument, followed by the arguments to the function.
+- `apply()` takes the object as the first argument, followed by an array of arguments to the function.
+- `bind()` returns a new function with the object as the `this` keyword.
