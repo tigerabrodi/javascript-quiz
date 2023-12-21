@@ -38,7 +38,40 @@ The callback will have to wait in the queue until the stack is empty.
 
 3. **Can you explain what a closure is in JavaScript?**
 
+Closure in JavaScript is when a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope.
+
+**What is the lexical scope?**
+
+Lexical scope refers to the visibility of variables. In JavaScript, a variable defined outside a function can be accessed inside another function defined after the variable declaration. But the opposite is not true. A variable defined inside a function is not accessible outside the function.
+
+**What does it mean for a function to remember and access its lexical scope?**
+
+It means that a function can access variables defined outside of it. For example:
+
+```javascript
+function outer() {
+  const name = "David"; // name is a lexical variable
+
+  function inner() {
+    console.log(name); // inner can access the name variable of the outer function
+  }
+
+  return inner;
+}
+
+const foo = outer();
+foo(); // Here, inner is executed outside its lexical scope
+```
+
+**Where is the outside part of lexical scope?**
+
+The outside part refers to `inner` function being executed outside the `outer` function.
+
 4. **What is the purpose of a `Promise` in JavaScript?**
+
+A `Promise` is an object that represents the eventual completion or failure of an asynchronous operation. It allows us to write asynchronous code that looks like synchronous code.
+
+The result of a `Promise` acts as a placeholder for the value that will be available in the future.
 
 5. **How would you check if an object is an array in JavaScript?**
 
