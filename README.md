@@ -75,13 +75,37 @@ The result of a `Promise` acts as a placeholder for the value that will be avail
 
 5. **How would you check if an object is an array in JavaScript?**
 
+```javascript
+Array.isArray(obj);
+```
+
 6. **What is event bubbling in the context of the DOM?**
+
+Event bubbling refers to the order in which events are handled. Let's say we have a `<div>` element inside a `<form>` element, both of which have an `onclick` event handler attached to them. If we click on the `<div>` element, the event will bubble up from the `<div>` to the `<form>` element. This means that the `<div>` element's `onclick` event handler will be executed first, followed by the `<form>` element's `onclick` event handler.
+
+The event bubbles up from the innermost element to the outermost element. This is called event bubbling.
 
 7. **Can you explain the concept of hoisting in JavaScript?**
 
+Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. This means that if we try to access a variable before it is declared, it will not throw an error. Instead, it will return `undefined`.
+
+For `var` and `function` declarations, JavaScript moves them to the top of their scope before code execution. This means that we can access them before they are declared. However, note that only the declarations are hoisted, not the initializations.
+
+For `let` and `const` declarations, JavaScript does not move them to the top of their scope. This means that we cannot access them before they are declared. You will get a `ReferenceError` if you try to access them before they are declared.
+
+For function expressions and arrow functions, they are not hoisted. This means that we cannot access them before they are declared. You will get a `ReferenceError` if you try to access them before they are declared.
+
+For class declarations, they are not hoisted.
+
 8. **What is the difference between `==` and `===` in JavaScript?**
 
+`==` is used for comparison, while `===` is used for strict comparison. The difference between them is that `==` converts the operands to the same type before making the comparison. This is called type coercion. `===` does not perform type coercion.
+
 9. **How do you make a function wait for the completion of a Promise?**
+
+Using the `await` keyword. The `await` keyword can only be used inside an `async` function. It makes the function wait for the completion of a Promise before moving on to the next line of code.
+
+If you do not want to wait for the completion of a Promise, you can use the `then()` method instead.
 
 10. **What are template literals in JavaScript?**
 
